@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    name: landing-page
+  name: landing-page
