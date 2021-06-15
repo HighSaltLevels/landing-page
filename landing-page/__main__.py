@@ -23,11 +23,6 @@ def get_sadie2():
     with open(SADIE2, "rb") as stream:
         return stream.read()
 
-@APP.route("/" + CSS)
-def get_css():
-    with open(CSS) as stream:
-        return stream.read()
-
 @APP.before_request
 def prevent_unexpected_endpoint_hits():
     """ I keep getting hits from scam servers with embedded urls in the url
