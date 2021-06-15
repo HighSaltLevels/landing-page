@@ -12,13 +12,21 @@
     h1 {text-align: center; color: white;}
     p {text-align: center; color: white;}
     div {text-align: center; color: white;}
+    #outer
+    {
+      width:100%;
+      text-align: center;
+    }
+    .inner
+    {
+      display: inline-block;
+    }
   </style>
-
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 </head>
 
 <body bgcolor="#363636">
   <h1>The Greeson Home Page</h1>
+
   <div class="outer">
     <div class="inner">
       <p>
@@ -27,10 +35,13 @@
       </p>
     </div>
     <div class="inner">
-      <button type="button">Click Here</button>
+      <a href="/register">
+        <input type="button" value="Register">
+      </a>
     </div>
   </div>
   <br/>
+
   <div class="outer">
     <div class="inner">
       <img src="assets/sadie1.jpg" alt="Picture of Sadie. The bestest doggie">
@@ -39,11 +50,12 @@
       <img src="assets/sadie2.jpg" alt="Picture of Sadie. The bestest doggie">
     </div>
   </div>
+
   <p>
     This site is maintained by David Greeson. 
-    Any questions you have can be directed to him. 
-    Otherwise, feel free to checkout my <a href=https://github.com/highsaltlevels>Github</a>
-    or feel free to reach me on discord with @HighSaltLevels#9844
+    If you have any questions, feel free to check 
+    out my <a href=https://github.com/highsaltlevels>Github</a>
+    or you can reach me on discord with @HighSaltLevels#9844
   </p>
 </body>
 
