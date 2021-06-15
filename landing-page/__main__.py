@@ -13,17 +13,17 @@ def index():
     with open("html/index.html") as stream:
         return stream.read()
 
-@APP.route(f"/{SADIE1}")
+@APP.route("/" + SADIE1)
 def get_sadie1():
     with open(SADIE1, "rb") as stream:
         return stream.read()
 
-@APP.route(f"/{SADIE2}")
+@APP.route("/" + SADIE2)
 def get_sadie2():
     with open(SADIE2, "rb") as stream:
         return stream.read()
 
-@APP.route(f"/{CSS}")
+@APP.route("/" + CSS)
 def get_css():
     with open(CSS) as stream:
         return stream.read()
