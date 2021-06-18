@@ -6,7 +6,7 @@ SADIE1 = "assets/sadie1.jpg"
 SADIE2 = "assets/sadie2.jpg"
 CSS = "html/styles.css"
 
-WHITELIST = ["/" + endpoint + "?" for endpoint in {SADIE1, SADIE2, CSS, "register" ""}]
+WHITELIST = ["/" + endpoint + "?" for endpoint in {SADIE1, SADIE2, CSS, "register", ""}]
 
 
 @APP.route("/")
