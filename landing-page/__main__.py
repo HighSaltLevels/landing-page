@@ -6,8 +6,6 @@ SADIE1 = "assets/sadie1.jpg"
 SADIE2 = "assets/sadie2.jpg"
 CSS = "html/styles.css"
 
-WHITELIST = ["/" + endpoint + "?" for endpoint in {SADIE1, SADIE2, CSS, "register", ""}]
-
 
 @APP.route("/")
 def index():
@@ -33,13 +31,10 @@ def get_registration_page():
         return stream.read()
 
 
-@APP.before_request
-def prevent_unexpected_endpoint_hits():
-    """I keep getting hits from scam servers with embedded urls in the url
-    Let's prevent that by whitelisting expected endpoints
-    """
-    if request.full_path not in WHITELIST:
-        raise werkzeug.exceptions.NotFound()
+@APP.route("/favicon.ico")
+def get_favicon():
+    with open("assets/greeson.png", "rb") as stream:
+        return stream.read()
 
 
 APP.run(host="0.0.0.0", port=80)
