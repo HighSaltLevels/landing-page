@@ -1,17 +1,11 @@
-ARG ARCH
-FROM ${ARCH}/ubuntu:20.04
+FROM node:17-alpine3.12
 
-WORKDIR /opt
+WORKDIR /landing-page
 
-COPY requirements.txt /tmp
+RUN npm install http-server -g
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3-dev python3-pip && \
-    python3 -m pip install -r /tmp/requirements.txt && \
-    rm /tmp/requirements.txt 
+COPY assets /landing-page/assets
+COPY images /landing-page/images
+COPY index.html /landing-page/index.html
 
-COPY landing-page /opt/landing-page
-COPY html /opt/html
-COPY assets /opt/assets
-
-CMD python3 /opt/landing-page
+CMD npx http-server
