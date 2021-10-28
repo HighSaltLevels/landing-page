@@ -6,6 +6,6 @@ RUN npm install http-server -g
 
 COPY assets /landing-page/assets
 COPY images /landing-page/images
-COPY index.html /landing-page/index.html
+COPY favicon.ico index.html /landing-page/
 
 CMD npx http-server
