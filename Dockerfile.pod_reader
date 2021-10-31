@@ -1,0 +1,18 @@
+FROM python:3.9.7-alpine3.14 as builder
+
+WORKDIR /landing-page
+
+COPY requirements-python.txt pod_reader /
+
+RUN apk add gcc musl-dev zlib-dev && \
+    python3 -m pip install -r /requirements-python.txt pyinstaller==4.5.1 && \
+    pyinstaller -F -p "/" -n pod_reader /__main__.py
+
+
+FROM alpine:3.14.2 as deliverable
+
+COPY --chown=420:69 pod_reader/kube_ca.crt /etc/ssl/certs/kube_ca.crt
+COPY --chown=420:69 --from=builder /landing-page/dist/pod_reader /pod_reader
+USER 420:69
+
+ENTRYPOINT /pod_reader

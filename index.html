@@ -26,6 +26,7 @@
 						<li><a href="#about" class="active">About Me</a></li>
 						<li><a href="#projects">My Projects</a></li>
 						<li><a href="#hobbies">My Hobbies</a></li>
+						<li><a href="#status">My Server Statuses</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -120,6 +121,34 @@
 									</div>
 								</div>
 							</section>
+
+                            <section id="status">
+                                <div class="container">
+                                    <h3>Server Statuses</h3>
+                                    <h5>SaltBot Status</h5>
+                                    <pre><code id=saltbot></code></pre>
+                                    <h5>Landing Page Status</h5>
+                                    <pre><code id=landing-page></code></pre>
+                                    <h5>Nginx Status</h5>
+                                    <pre><code id=nginx></code></pre>
+
+                                    <script type="text/javascript">
+                                        function getStatus(service) {
+                                            const Http = new XMLHttpRequest();
+                                            const url = "http://status.greeson.xyz/" + service;
+                                            Http.open("GET", url);
+                                            Http.send();
+
+                                            Http.onreadystatechange = (e) => {
+                                                document.getElementById(service).innerHTML = Http.responseText
+                                            }
+                                        }
+                                        getStatus("saltbot");
+                                        getStatus("landing-page");
+                                        getStatus("nginx");
+                                    </script>
+                                </div>
+                            </section>
 
 						<!-- Four -->
                         <!--

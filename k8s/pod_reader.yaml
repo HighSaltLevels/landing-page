@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-reader
+  labels:
+    app: pod-reader
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pod-reader
+  template:
+    metadata:
+      labels:
+        app: pod-reader
+    spec:
+      containers:
+      - name: pod-reader
+        image: highsaltlevels/pod-reader:latest
+        imagePullPolicy: Always
+        env:
+        - name: AUTH_JWT
+          value: __AUTH_JWT_PLACEHOLDER__
+        - name: KUBE_URL
+          value: __KUBE_URL_PLACEHOLDER__
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pod-reader
+  name: pod-reader
+spec:
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 42069
+    targetPort: 42069
+    protocol: TCP
+    nodePort: 31000
+  selector:
+    app: pod-reader
+  sessionAffinity: None
+  type: NodePort
