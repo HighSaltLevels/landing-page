@@ -125,6 +125,11 @@
                             <section id="status">
                                 <div class="container">
                                     <h3>Server Statuses</h3>
+                                    <p>I have a few services running in my kubernetes cluster including the server hosting this
+                                    site (it's named "landing-page" below). To accomplish this, I created a ServiceAccount and a
+                                    ClusterRole that allows this ServiceAccount to <strong>only</strong> get, list, and watch pods
+                                    in any namespace. That way, I'm not potentially exposing any write access to my cluster on the
+                                    internet.</p>
                                     <h5>SaltBot Status</h5>
                                     <pre><code id=saltbot></code></pre>
                                     <h5>Landing Page Status</h5>
