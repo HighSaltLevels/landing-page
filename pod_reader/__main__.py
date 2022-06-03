@@ -12,13 +12,16 @@ import requests
 
 APP = Flask(__name__)
 RESP_HEADERS = {"Content-Type": "text/plain", "Access-Control-Allow-Origin": "*"}
+SERVICE_ACCOUNT = "/var/run/secrets/kubernetes.io/serviceaccount"
 
-REQ_HEADERS = {"Authorization": f"Bearer {os.getenv('AUTH_JWT')}"}
+KUBE_URL = os.getenv("KUBERNETES_SERVICE_HOST", "localhost")
+KUBE_PORT = os.getenv("KUBERNETES_SERVICE_PORT", "6443")
+KUBE_CA_CERT = f"{SERVICE_ACCOUNT}/ca.crt"
 
-KUBE_URL = os.getenv("KUBE_URL")
-KUBE_PORT = os.getenv("KUBE_PORT", "6443")
-KUBE_CA_CERT = "/etc/ssl/certs/kube_ca.crt"
+with open(f"{SERVICE_ACCOUNT}/token") as token:
+    SERVICE_ACCOUNT_TOKEN = token.read()
 
+REQ_HEADERS = {"Authorization": f"Bearer {SERVICE_ACCOUNT_TOKEN}"}
 
 class ListPodsError(Exception):
     """Error raised if there is an issue listing pods"""
@@ -43,7 +46,7 @@ def list_pods(namespace="default"):
             return data
 
         except requests.RequestException as error:
-            print(f"Retrying due to {error}.")
+            print(f"Retrying due to {error}.", flush=True)
 
     raise ListPodsError("Unable to fetch data.")
 
