@@ -9,4 +9,4 @@ COPY assets /landing-page/assets
 COPY images /landing-page/images
 COPY favicon.ico index.html 404.html /landing-page/
 
-CMD npx http-server
+CMD npx http-server --cors
