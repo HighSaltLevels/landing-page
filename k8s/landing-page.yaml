@@ -36,6 +36,7 @@ spec:
   - port: 50000
     protocol: TCP
     targetPort: 8080
+    nodePort: 32069
   selector:
     app: landing-page
   sessionAffinity: None
