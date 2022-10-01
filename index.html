@@ -124,11 +124,11 @@
                             <section id="status">
                                 <div class="container">
                                     <h3>Server Statuses</h3>
-                                    <p>I have a few services running in my kubernetes cluster including the server hosting this
-                                    site (it's named "landing-page" below). To accomplish this, I created a ServiceAccount and a
-                                    ClusterRole that allows this ServiceAccount to <strong>only</strong> get, list, and watch pods
-                                    in any namespace. That way, I'm not potentially exposing any write access to my cluster on the
-                                    internet.</p>
+                                    <p>I have a few services running in my self-hosted kubernetes cluster including the containers
+				    that are running this site (it's named "landing-page" below). This server (and everything else
+				    that is running in this cluster) is running behind nginx using TLS (Soon to be mTLS) to encrypt
+				    incoming and outgoing traffic. Although there's no credentials required for any of my public
+				    sites.</p>
                                     <h5>SaltBot Status</h5>
                                     <pre><code id=saltbot></code></pre>
                                     <h5>Landing Page Status</h5>
