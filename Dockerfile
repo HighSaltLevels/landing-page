@@ -8,4 +8,4 @@ COPY assets /landing-page/assets
 COPY images /landing-page/images
 COPY health favicon.ico index.html 404.html /landing-page/
 
-CMD npx http-server --cors
+CMD npx http-server --cors --tls --cert /opt/tls/tls.crt --key /opt/tls/tls.key
