@@ -4,3 +4,5 @@ package.json
 .venv
 
 self-signed*
+
+podreader/tls.*

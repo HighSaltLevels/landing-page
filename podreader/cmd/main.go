@@ -44,7 +44,7 @@ func main() {
 	})
 
 	log.Print("Pod Reader starting...")
-	if err := http.ListenAndServe(":42069", nil); err != nil {
+	if err := http.ListenAndServeTLS(":42069", "tls/tls.crt", "tls/tls.key", nil); err != nil {
 		log.Fatalf("Got error: %v\n", err)
 	}
 }
