@@ -6,3 +6,4 @@ package.json
 self-signed*
 
 podreader/tls.*
+podreader/tls/tls.*
