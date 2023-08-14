@@ -57,11 +57,14 @@ func createChars(char string, numChars int) string {
 	return chars
 }
 
-/* Parse the time Duration, and return the string representation.
-   i.e. 5d, 1s, 3m, etc... */
+/*
+Parse the time Duration, and return the string representation.
+
+	i.e. 5d, 1s, 3m, etc...
+*/
 func parseAge(age time.Duration) string {
 	if age.Seconds() < 60.4 {
-		return fmt.Sprintf("%.0fm", age.Seconds())
+		return fmt.Sprintf("%.0fs", age.Seconds())
 	}
 
 	if age.Minutes() < 60.4 {
